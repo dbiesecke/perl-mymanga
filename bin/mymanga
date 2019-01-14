@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+#use Data::Dumper qw( Dumper );
+use FindBin qw( $Bin);
+
+require Moose::Role;
+require MooseX::App;
+require Sub::Identify;
+#require qw(PerlIO::utf8_strict Term::ReadKey common::sense IPC::System::Simple HTML::Form String::CRC32 Net::SSLeay);
+use MooseX::App qw/ ZshCompletion /;
+
+
+our $VERSION = "0.1";
+#     
+# # require MyManga::httpd;
+# my $funcname = "ShellUtils";
+# my %symbols = ();
+# my $package =__PACKAGE__; #bring it in at run-time
+# {
+#    no strict;
+#    %symbols = %{$package . "::"}; #See Symbol Tables on perlmod
+# }
+
+use lib ( $FindBin::Bin.'/' , $FindBin::Bin.'/lib' , $FindBin::Bin.'/My' );
+
+use MyManga;
+
+    # ABSTRACT: Main Script to load all Plugins
+    # PODNAME: mycli-pod.pl
+    
+MyManga->new_with_command->run;
+
+
+
+exit;
+
